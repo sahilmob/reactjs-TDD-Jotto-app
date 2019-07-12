@@ -12,10 +12,10 @@ export default function GuessedWords (props) {
           <table>
             <thead>
               <tr><th>Guess</th><th>Marching Letters</th></tr>
-              <tbody>
-                {guessedWords.map((word, i) => <tr key={i} data-test="guessed-word"><td>{word.guessedWord}</td><td>{word.letterMatchCount}</td></tr>)}
-              </tbody>
             </thead>
+            <tbody>
+              {guessedWords.map((word, i) => <tr key={i} data-test="guessed-word"><td>{word.guessedWord}</td><td>{word.letterMatchCount}</td></tr>)}
+            </tbody>
           </table>
         </div> :
         <span data-test="guess-instructions">Try to guess the secret word!</span>
