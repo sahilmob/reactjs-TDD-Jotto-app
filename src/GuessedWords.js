@@ -6,7 +6,19 @@ export default function GuessedWords (props) {
 
   return (
     <div data-test="component-guessed-words">
-      {guessedWords.length ? <span></span> : <span data-test="guess-instructions">Try to guess the secret word!</span>
+      {guessedWords.length ?
+        <div data-test="guessed-words">
+          <h3>Guessed Words</h3>
+          <table>
+            <thead>
+              <tr><th>Guess</th><th>Marching Letters</th></tr>
+              <tbody>
+                {guessedWords.map((word, i) => <tr key={i} data-test="guessed-word"><td>{word.guessedWord}</td><td>{word.letterMatchCount}</td></tr>)}
+              </tbody>
+            </thead>
+          </table>
+        </div> :
+        <span data-test="guess-instructions">Try to guess the secret word!</span>
       }
     </div>
   )
