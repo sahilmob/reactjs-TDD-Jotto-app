@@ -17,7 +17,7 @@ function App ({ success }) {
 
 const mapStateToProps = state => {
   return {
-    success: state.success.success
+    success: state.success
   }
 }
 
