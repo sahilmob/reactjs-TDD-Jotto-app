@@ -2,6 +2,7 @@ import './App.css';
 
 import Congrats from "./Congrats"
 import GuessedWords from "./GuessedWords"
+import Input from "./Input";
 import React from 'react';
 import { connect } from "react-redux"
 
@@ -10,6 +11,7 @@ function App ({ success }) {
     <div className="container">
       <h1>Jotto</h1>
       <Congrats success={success} />
+      <Input />
       <GuessedWords guessedWords={[{ guessedWord: "aaa", letterMatchCount: 5 }]} />
     </div>
   );
