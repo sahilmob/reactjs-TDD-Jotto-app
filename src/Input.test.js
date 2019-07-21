@@ -57,3 +57,17 @@ describe("render", () => {
     })
   })
 })
+
+describe("redux props", () => {
+  it("should have access to the success piece of state as a prop", () => {
+    const success = true
+    const wrapper = setup({ success })
+    const successProp = wrapper.instance().props.success;
+    expect(successProp).toBe(success)
+  })
+  it("should has access to the `guessWord` action creator as prop", () => {
+    const wrapper = setup()
+    const guessWordProp = wrapper.instance().props.guessWord;
+    expect(guessWordProp).toBeInstanceOf(Function)
+  })
+})
