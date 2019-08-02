@@ -1,4 +1,4 @@
-import App from "./App"
+import App, { UnconnectedApp } from "./App"
 import React from "react"
 import { storeFactory } from "../test/testUtils"
 
@@ -32,4 +32,12 @@ describe("redux props", () => {
     const getSecretWordProp = wrapper.instance().props.getSecretWord
     expect(getSecretWordProp).toBeInstanceOf(Function)
   })
+})
+
+it("should call getSecretWord on App mount", () => {
+  const getSecretWordMock = jest.fn();
+  const wrapper = shallow(<UnconnectedApp success={false} guessedWords={[]} getSecretWord={getSecretWordMock} />);
+  wrapper.instance().componentDidMount()
+  const getSecretWordCallCount = getSecretWordMock.mock.calls.length
+  expect(getSecretWordCallCount).toBe(1)
 })
