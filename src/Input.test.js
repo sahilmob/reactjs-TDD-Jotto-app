@@ -93,4 +93,8 @@ describe("guessWord action creator", () => {
     const guessWordArg = guessWordMock.mock.calls[0][0]
     expect(guessWordArg).toBe(guessedWord)
   })
+  it("should clear the input box after guessWord is called", () => {
+    const inputBoxValue = wrapper.instance().inputBox.current.value
+    expect(inputBoxValue).toBe("")
+  })
 })
