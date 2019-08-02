@@ -9,13 +9,13 @@ import { getSecretWord } from "./actions"
 
 class App extends React.Component {
   render () {
-    const { success } = this.props
+    const { success, guessedWords } = this.props
     return (
       <div className="container">
         <h1>Jotto</h1>
         <Congrats success={success} />
         <Input />
-        <GuessedWords guessedWords={[{ guessedWord: "aaa", letterMatchCount: 5 }]} />
+        <GuessedWords guessedWords={guessedWords} />
       </div>
     );
   }
