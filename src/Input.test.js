@@ -1,4 +1,4 @@
-import Input from "./Input";
+import Input, { UnconnectedInput } from "./Input";
 import React from "react";
 import { findByAttr } from "../test/testUtils"
 import { storeFactory } from "../test/testUtils"
@@ -69,5 +69,20 @@ describe("redux props", () => {
     const wrapper = setup()
     const guessWordProp = wrapper.instance().props.guessWord;
     expect(guessWordProp).toBeInstanceOf(Function)
+  })
+})
+
+
+describe("guessWord action creator", () => {
+  it("should call guessWord on Submit button clicked", () => {
+    const guessWordMock = jest.fn()
+    const wrapper = shallow(<UnconnectedInput success={false} guessWord={guessWordMock} />)
+    const submitButton = findByAttr(wrapper, "submit-button")
+
+    submitButton.simulate("click")
+
+    const guessWordCallCount = guessWordMock.mock.calls.length
+
+    expect(guessWordCallCount).toBe(1)
   })
 })
