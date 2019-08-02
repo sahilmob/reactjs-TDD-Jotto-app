@@ -5,22 +5,29 @@ import GuessedWords from "./GuessedWords"
 import Input from "./Input";
 import React from 'react';
 import { connect } from "react-redux"
+import { getSecretWord } from "./actions"
 
-function App ({ success }) {
-  return (
-    <div className="container">
-      <h1>Jotto</h1>
-      <Congrats success={success} />
-      <Input />
-      <GuessedWords guessedWords={[{ guessedWord: "aaa", letterMatchCount: 5 }]} />
-    </div>
-  );
+class App extends React.Component {
+  render () {
+    const { success } = this.props
+    return (
+      <div className="container">
+        <h1>Jotto</h1>
+        <Congrats success={success} />
+        <Input />
+        <GuessedWords guessedWords={[{ guessedWord: "aaa", letterMatchCount: 5 }]} />
+      </div>
+    );
+  }
+
 }
 
 const mapStateToProps = state => {
   return {
-    success: state.success
+    success: state.success,
+    secretWord: state.secretWord,
+    guessedWords: state.guessedWords
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { getSecretWord })(App);
